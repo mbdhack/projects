@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -49,37 +50,36 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private Integer id;
+    protected Integer id;
     @Basic(optional = false)
     @Column(name = "FIRSTNAME")
     @Size(min=3, max=50, message="{person.firstname}")
-    private String firstname;
+    protected String firstname;
     @Basic(optional = false)
     @Column(name = "LASTNAME")
     @Size(min=3, max=100, message="{person.lastname}")
     
-    private String lastname;
+    protected String lastname;
     @Basic(optional = false)
     @Column(name = "EMAIL")
     @Pattern(regexp = ".+@.+\\.[a-z]+", message= "{person.email}")
-    private String email;
+    protected String email;
     @Basic(optional = false)
     @Column(name = "ADDRESS")
     @Size(min=3, max=45, message= "{person.address}")
-    private String address;
+    protected String address;
     @Basic(optional = false)
     @Column(name = "CITY")
     @Size(min=3, max=45, message= "{person.city}")
-    private String city;
+    protected String city;
     @Size(min=7, max=100, message= "{person.password}")
     @Column(name = "PASSWORD")
-    private String password;
+    protected String password;
     @Column(name = "DTYPE")
-    private String dtype;
+    protected String dtype;
     @ManyToMany(mappedBy = "personList")
-    private List<Groups> groupsList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
-    private List<CustomerOrder> customerOrderList;
+    protected List<Groups> groupsList;
+   
 
     public Person() {
     }
@@ -170,14 +170,7 @@ public class Person implements Serializable {
         this.groupsList = groupsList;
     }
 
-    @XmlTransient
-    public List<CustomerOrder> getCustomerOrderList() {
-        return customerOrderList;
-    }
-
-    public void setCustomerOrderList(List<CustomerOrder> customerOrderList) {
-        this.customerOrderList = customerOrderList;
-    }
+   
 
     @Override
     public int hashCode() {

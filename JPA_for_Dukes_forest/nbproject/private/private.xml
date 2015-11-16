@@ -8,8 +8,11 @@
             <file>file:/C:/Users/karthik/Documents/NetBeansProjects/JPA_for_Dukes_forest/src/Entities/Groups.java</file>
             <file>file:/C:/Users/karthik/Documents/NetBeansProjects/JPA_for_Dukes_forest/src/Entities/OrderDetail.java</file>
             <file>file:/C:/Users/karthik/Documents/NetBeansProjects/JPA_for_Dukes_forest/src/Entities/CustomerOrder.java</file>
+            <file>file:/C:/Users/karthik/Documents/NetBeansProjects/JPA_for_Dukes_forest/src/Entities/Customer.java</file>
+            <file>file:/C:/Users/karthik/Documents/NetBeansProjects/JPA_for_Dukes_forest/src/Entities/Administrator.java</file>
             <file>file:/C:/Users/karthik/Documents/NetBeansProjects/JPA_for_Dukes_forest/src/Entities/Person.java</file>
             <file>file:/C:/Users/karthik/Documents/NetBeansProjects/JPA_for_Dukes_forest/src/Entities/Product.java</file>
+            <file>file:/C:/Users/karthik/Documents/NetBeansProjects/JPA_for_Dukes_forest/src/Entities/OrderDetailPK.java</file>
         </group>
     </open-files>
 </project-private>
