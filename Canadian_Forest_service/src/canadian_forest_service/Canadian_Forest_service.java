@@ -7,6 +7,7 @@ package canadian_forest_service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -30,34 +31,18 @@ public class Canadian_Forest_service {
     /**
      * @param args the command line arguments
      */
-    private List<Forest> forestList;
-    private Forest tempForest;
+  private  Forest tempForest;
+   
 
-    public Forest getTempForest() {
-        return tempForest;
-    }
-
-    public void setTempForest(Forest tempForest) {
-        this.tempForest = tempForest;
-    }
-
-    public Canadian_Forest_service(List<Forest> forestList) {
-        this.forestList = forestList;
-    }
+   
     public Canadian_Forest_service(){
         
     }
     
 
-    public List<Forest> getForestList() {
-        return forestList;
-    }
-
-    public void setForestList(List<Forest> forestList) {
-        this.forestList = forestList;
-    }
+   
     
-    public boolean createForest(String name)
+    public Forest createForest(String name)
     {
         List<Tree> treeList=new ArrayList<Tree>();
         for(int i=1;i<=10;i++)
@@ -66,10 +51,11 @@ public class Canadian_Forest_service {
             treeList.add(t);
         }
         tempForest=new Forest(treeList,name);
-        return true;
+        tempForest.setCreated(true);
         
+        return tempForest;
     }
-    public boolean loadForest(String name) throws IOException 
+    public  Forest loadForest(String name, Forest tempForest) throws IOException 
     {
         //load to check if forest with name exists
         
@@ -96,21 +82,32 @@ public class Canadian_Forest_service {
         {
             e.printStackTrace();
         }
-        tempForest=new Forest(treelist,name);
-        return true;
+        tempForest.setTreeList(treelist);
+        tempForest.setName(name);
+        tempForest.setCreated(true);
+        return tempForest;
     }
+   
+   
     
-    public  boolean saveForestInFile()
+    
+    public  int saveForestInFile(Forest tempForest)
     {
+        if(tempForest.created==false)
+            return 1;
+        String pathname="C:\\Users\\karthik\\Desktop\\CanadianForestSimulation\\" + tempForest.getName() ;
+        File f=new File(pathname);
+        if(f.exists())
+            return 2;
         PrintWriter pw=null;
         try {
             
             
             
-            String pathname="C:\\Users\\karthik\\Desktop\\CanadianForestSimulation\\" + tempForest.getName() ;
+            String pathname1="C:\\Users\\karthik\\Desktop\\CanadianForestSimulation\\" + tempForest.getName() ;
             
             
-            pw=new PrintWriter(new BufferedWriter(new FileWriter(pathname,true )));
+            pw=new PrintWriter(new BufferedWriter(new FileWriter(pathname1,true )));
            List<Tree> t= tempForest.getTreeList();
            Iterator<Tree> i=t.iterator();
            while(i.hasNext())
@@ -127,10 +124,10 @@ public class Canadian_Forest_service {
         {
             pw.close();
         }
-    return true;
+    return 3;
         
     }
-    public boolean ReapForest(float max)
+    public Forest ReapForest(float max, Forest tempForest)
     {
         List<Tree> t= tempForest.getTreeList();
            Iterator<Tree> i=t.iterator();
@@ -144,9 +141,9 @@ public class Canadian_Forest_service {
                }
                //insert code to print modified
            }
-          return true; 
+          return tempForest; 
     }
-     public boolean simulateForestGrowth(int years)
+     public Forest simulateForestGrowth(int years,Forest tempForest)
      {
          List<Tree> t= tempForest.getTreeList();
            Iterator<Tree> i=t.iterator();
@@ -158,7 +155,7 @@ public class Canadian_Forest_service {
                
            }
             //insert code to print tree
-          return true;
+          return tempForest;
      }
     
             

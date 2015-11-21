@@ -1,6 +1,7 @@
 
 import Validation.Forest_name_verifier;
 import canadian_forest_service.Canadian_Forest_service;
+import canadian_forest_service.Forest;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 
@@ -19,8 +20,13 @@ public class Forest_UI extends javax.swing.JFrame {
     /**
      * Creates new form Forest_UI
      */
+  
+    
     public Forest_UI() {
+         
         initComponents();
+        
+        
     }
 
     /**
@@ -68,6 +74,11 @@ public class Forest_UI extends javax.swing.JFrame {
         jButton2.setText("REAP FOREST");
 
         jButton3.setText("Save Forest");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setText("Load Forest");
 
@@ -218,9 +229,11 @@ public class Forest_UI extends javax.swing.JFrame {
 
 boolean t=verifier.verify(jTextField1);
 if(t==true){
-    Canadian_Forest_service u=new Canadian_Forest_service();
-    u.createForest(jTextField1.getText());
-    u.saveForestInFile();
+     Canadian_Forest_service u=new  Canadian_Forest_service();
+    
+    Forest f=u.createForest(jTextField1.getText());
+   
+    
 }
 else
 {
@@ -229,6 +242,12 @@ else
     
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        
+     
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -263,7 +282,7 @@ else
                 new Forest_UI().setVisible(true);
             }
         });
-        
+         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
