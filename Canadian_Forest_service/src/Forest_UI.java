@@ -1,6 +1,8 @@
 
+import Validation.Forest_growth_verifier;
 import Validation.Forest_name_verifier;
-import canadian_forest_service.Canadian_Forest_service;
+import Validation.Number_of_years;
+import canadian_forest_service.Canadian_Foreset_service;
 import canadian_forest_service.Forest;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
@@ -54,6 +56,8 @@ public class Forest_UI extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +76,11 @@ public class Forest_UI extends javax.swing.JFrame {
         jLabel3.setText("Enter name of forest below");
 
         jButton2.setText("REAP FOREST");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Save Forest");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,6 +119,20 @@ public class Forest_UI extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setText("Display Forest");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jButton8.setText("simulate forest");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,7 +159,10 @@ public class Forest_UI extends javax.swing.JFrame {
                                 .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton4)
-                                    .addComponent(jButton1))))
+                                    .addComponent(jButton1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jButton7)))
                         .addGap(155, 155, 155)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -145,16 +171,17 @@ public class Forest_UI extends javax.swing.JFrame {
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButton2))))
+                    .addComponent(jLabel6)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
-                        .addComponent(jButton5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(71, 71, 71)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton8)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(121, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(354, 354, 354))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(48, 48, 48)
@@ -183,29 +210,36 @@ public class Forest_UI extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton3)
+                                    .addComponent(jButton4)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel5)
+                                .addGap(10, 10, 10)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(81, 81, 81)
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel5)
-                        .addGap(10, 10, 10)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17)
+                        .addGap(141, 141, 141)
+                        .addComponent(jButton7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
-                .addGap(155, 155, 155))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8)
+                .addGap(106, 106, 106))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(230, 230, 230)
                     .addComponent(jButton6)
-                    .addContainerGap(394, Short.MAX_VALUE)))
+                    .addContainerGap(420, Short.MAX_VALUE)))
         );
 
         pack();
@@ -229,9 +263,11 @@ public class Forest_UI extends javax.swing.JFrame {
 
 boolean t=verifier.verify(jTextField1);
 if(t==true){
-     Canadian_Forest_service u=new  Canadian_Forest_service();
+    Canadian_Foreset_service u= Canadian_Foreset_service.getInstance();
     
     Forest f=u.createForest(jTextField1.getText());
+   
+   
    
     
 }
@@ -245,9 +281,73 @@ else
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        
-     
+         Canadian_Foreset_service u= Canadian_Foreset_service.getInstance();
+        Forest f=u.getTempForest();
+         int i=  u.saveForestInFile(f);
+         if(i==1)
+              JOptionPane.showMessageDialog(null,"No current forest, create new forest");
+         if(i==2)
+             JOptionPane.showMessageDialog(null,"Forest aldready exists, create a new forest");
+             
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        InputVerifier verifier=new Forest_growth_verifier();
+        jTextField2.setInputVerifier(verifier);
+
+boolean t=verifier.verify(jTextField2);
+if(t==true)
+{
+ Canadian_Foreset_service u= Canadian_Foreset_service.getInstance();
+        Forest f=u.getTempForest();
+      int i=  u.ReapForest(Double.parseDouble(jTextField2.getText()) ,f);
+      if(i==1)
+      {
+          JOptionPane.showMessageDialog(null,"No current forest exists, either load or create a new forest");
+      }
+      
+        
+}
+else
+{
+    JOptionPane.showMessageDialog(null,"Please enter floating point numbers greater than 0 and less than 100 upto 2 decimal points");
+}
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        Canadian_Foreset_service u= Canadian_Foreset_service.getInstance();
+        Forest f=u.getTempForest();
+        int i=u.DisplayForest(f);
+        if(i==1)
+            JOptionPane.showMessageDialog(null,"No current forest, either load a forest or create a new one");
+        
+        
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+         InputVerifier verifier=new Number_of_years();
+        jTextField4.setInputVerifier(verifier);
+
+boolean t=verifier.verify(jTextField4);
+        
+        if(t==true)
+        {
+        Canadian_Foreset_service u= Canadian_Foreset_service.getInstance();
+        Forest f=u.getTempForest();
+       int i= u.simulateForestGrowth(Integer.parseInt(jTextField4.getText()), f);
+       if(i==1)
+           JOptionPane.showMessageDialog(null,"No current forest, either load a forest or create a new one");
+       
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Enter only positive integers");
+        }
+        
+    }//GEN-LAST:event_jButton8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -292,6 +392,8 @@ else
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

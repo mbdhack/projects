@@ -20,17 +20,21 @@ public class Tree {
         this.percentGrowth = percentGrowth;
     }
     public void modify()
+            
     {
-        height=Canadian_Forest_service.getRandomNumberInRange(1.00,5.00);
-        percentGrowth=Canadian_Forest_service.getRandomNumberInRange(55.00, 100.00);
+        
+        height = Canadian_Foreset_service.getRandomNumberInRange(1.00, 5.00);
+        percentGrowth=Canadian_Foreset_service.getRandomNumberInRange(55.00, 100.00);
         
         
     }
     public void grow(int years)
     {
+        
+        for(int i =0;i<years;i++){
         height+=height*(percentGrowth/100);
-        
-        
+        height=Canadian_Foreset_service.RoundTo2Decimals(height);
+        }
     }
 
     public int getId() {
