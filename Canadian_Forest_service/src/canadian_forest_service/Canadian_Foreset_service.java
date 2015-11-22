@@ -57,14 +57,19 @@ public class Canadian_Foreset_service {
             treeList.add(t);
         }
         tempForest=new Forest(treeList,name);
-        tempForest.setCreated(true);
+        
         
         return tempForest;
     }
-    public  Forest loadForest(String name, Forest tempForest) throws IOException 
+    public  int loadForest( String name) throws IOException 
     {
         //load to check if forest with name exists
-        
+        String pathname="C:\\Users\\karthik\\Desktop\\CanadianForestSimulation\\" + name ;
+        File f=new File(pathname);
+        if(!f.exists())
+        {
+           return 1; 
+        }
         BufferedReader br = null;
         List<Tree> treelist=null;
         
@@ -88,10 +93,11 @@ public class Canadian_Foreset_service {
         {
             e.printStackTrace();
         }
-        tempForest.setTreeList(treelist);
-        tempForest.setName(name);
-        tempForest.setCreated(true);
-        return tempForest;
+         Canadian_Foreset_service u= Canadian_Foreset_service.getInstance();
+         Forest forest=new Forest(treelist,name);
+         u.setTempForest(forest);
+        
+        return 2;
     }
    
    
@@ -99,12 +105,7 @@ public class Canadian_Foreset_service {
     
     public  int saveForestInFile(Forest tempForest)
     {
-        if(tempForest==null)
-            return 1;
-        String pathname="C:\\Users\\karthik\\Desktop\\CanadianForestSimulation\\" + tempForest.getName() ;
-        File f=new File(pathname);
-        if(f.exists())
-            return 2;
+        
         PrintWriter pw=null;
         try {
             

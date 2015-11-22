@@ -14,15 +14,9 @@ import java.util.List;
 public class Forest {
     private List<Tree> treeList;
     private String name;
-    boolean created;
+    
 
-    public boolean isCreated() {
-        return created;
-    }
-
-    public void setCreated(boolean created) {
-        this.created = created;
-    }
+    
 
     public Forest(List<Tree> treeList, String name) {
         this.treeList = treeList;
